@@ -90,31 +90,30 @@ class DrawingClassifier:
         btn_frame.columnconfigure(1, weight=1)
         btn_frame.columnconfigure(2, weight=1)
 
-        class1_btn = Button(btn_frame, text=self.class1, command=lambda: self.save(1))
+        class1_btn = Button(btn_frame, text=self.class1, command=lambda: self.save(1), bg='blue', fg='red')
         class1_btn.grid(row=0, column=0, sticky=W + E)
 
-        class2_btn = Button(btn_frame, text=self.class2, command=lambda: self.save(2))
+        class2_btn = Button(btn_frame, text=self.class2, command=lambda: self.save(2), bg='green', fg='blue')
         class2_btn.grid(row=0, column=1, sticky=W + E)
 
-        class3_btn = Button(btn_frame, text=self.class3, command=lambda: self.save(3))
+        class3_btn = Button(btn_frame, text=self.class3, command=lambda: self.save(3), bg='red', fg='dark red')
         class3_btn.grid(row=0, column=2, sticky=W + E)
 
-        clear_btn = Button(btn_frame, text='Clear', command=self.clear)
+        clear_btn = Button(btn_frame, text='Clear Canvas', command=self.clear, bg='gray', fg='purple')
         clear_btn.grid(row=1, column=0, sticky=W + E)
 
-        train_btn = Button(btn_frame, text='Train', command=self.train)
+        train_btn = Button(btn_frame, text='Train Model', command=self.train, bg='orange', fg='black')
         train_btn.grid(row=1, column=1, sticky=W + E)
 
-
-        change_btn = Button(btn_frame, text='Change', command=self.rotate_model)
+        change_btn = Button(btn_frame, text='Change Model', command=self.rotate_model, bg='purple', fg='orange')
         change_btn.grid(row=1, column=2, sticky=W + E)
 
-        predict_btn = Button(btn_frame, text='Predict', command=self.predict)
-        predict_btn.grid(row=2, column=0, sticky=W + E)
+        predict_btn = Button(btn_frame, text='Predict', command=self.predict, bg='yellow', fg='black')
+        predict_btn.grid(row=2, column=0, columnspan=3, sticky=W + E)
 
-        self.status_label = Label(btn_frame, text=f"Current Model: {type(self.clf).__name__}")
-        self.status_label.config(font=("Aerial", 12))
-        self.status_label.grid(row=2, column=1, stick=W + E)
+        self.status_label = Label(btn_frame, text=f"Current Model: {type(self.clf).__name__}", bg='lightgray')
+        self.status_label.config(font=("Arial", 12))
+        self.status_label.grid(row=3, column=0, columnspan=3, sticky=W + E)
 
         self.root.protocol("Close window", self.on_closing)
         self.root.attributes("-topmost", True)
